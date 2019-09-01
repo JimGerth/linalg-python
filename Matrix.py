@@ -65,15 +65,3 @@ class Matrix:
         elif type(other) is Matrix:
             assert self.cols == other.rows
             return Matrix([[reduce(lambda a, b: a + b, [self[row][i] * other[i][col] for i in range(self.cols)]) for col in range(other.cols)] for row in range(self.rows)])
-
-
-if __name__ == '__main__':
-    print(Matrix([[0, 1], [2, 3], [4, 5], [6, 7]]))
-    print(Matrix(rows=2, cols=4))
-    print(Matrix(rows=3, cols=5, val=1))
-    print(Matrix([[10, 9], [8, 7]]) - Matrix([[5, 6], [7, 8]]))
-    print(Matrix([[1, 2, 3, 4], [4, 5, 6, 7], [7, 8, 9, 0]]) * Matrix([[1, 5], [2, 6], [3, 7], [4, 8]]))
-    print(Matrix([[1, 5], [2, 6], [3, 7], [4, 8]]))
-    print(Matrix([[1, 5], [2, 6], [3, 7], [4, 8]]).T)
-    print(Matrix([[1, 2, 3], [4, 5, 6]]) * Matrix([[7], [8], [9]]))
-    print(Matrix([[1, 2, 3]]) * Matrix([[4], [5], [6]]))
