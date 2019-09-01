@@ -13,11 +13,11 @@ class Matrix:
 
     @property
     def rows(self):
-        return len(self.vals)
+        return len(self)
 
     @property
     def cols(self):
-        return len(self.vals[0]) if type(self.vals[0]) is list else 1
+        return len(self[0])
 
     @property
     def shape(self):
@@ -32,6 +32,9 @@ class Matrix:
 
     def __setitem__(self, idx, val):
         self.vals[idx] = val
+
+    def __len__(self):
+        return len(self.vals)
 
     def __str__(self):
         out = '\n'
