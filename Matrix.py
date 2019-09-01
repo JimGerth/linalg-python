@@ -17,10 +17,7 @@ class Matrix:
 
     @property
     def cols(self):
-        if type(self.vals[0]) is list:
-            return len(self.vals[0])
-        else:
-            return 1
+        return len(self.vals[0]) if type(self.vals[0]) is list else 1
 
     @property
     def shape(self):
