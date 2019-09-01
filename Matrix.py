@@ -31,10 +31,7 @@ class Matrix:
         return Matrix([[self[row][col] for row in range(self.rows)] for col in range(self.cols)])
 
     def __getitem__(self, idx):
-        if type(self.vals[idx]) is list:
-            return self.vals[idx]
-        else:
-            return [self.vals[idx]]
+        return self.vals[idx] if type(self.vals[idx]) is list else [self.vals[idx]]
 
     def __setitem__(self, idx, val):
         self.vals[idx] = val
