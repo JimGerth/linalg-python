@@ -4,7 +4,9 @@ class Matrix:
 
     def __init__(self, vals=None, rows=None, cols=None, val=0):
         if not vals:
-            self.vals = [[val for col in range(cols)] for row in range(rows)]
+            assert rows
+            assert cols
+            self.vals = [[val for _ in range(cols)] for _ in range(rows)]
         else:
             self.vals = vals
 
@@ -21,7 +23,7 @@ class Matrix:
 
     @property
     def shape(self):
-        return (self.rows, self.cols)
+        return self.rows, self.cols
 
     def __getitem__(self, idx):
         return self.vals[idx]
