@@ -44,13 +44,15 @@ class Matrix:
         if type(other) is int or type(other) is float:
             return Matrix([[self[row][col] + other for col in range(self.cols)] for row in range(self.rows)])
         elif type(other) is Matrix:
-            pass
+            assert self.rows == other.rows and self.cols == other.cols
+            return Matrix([[self[row][col] + other[row][col] for col in range(self.cols)] for row in range(self.rows)])
 
     def __sub__(self, other):
         if type(other) is int or type(other) is float:
             return Matrix([[self[row][col] - other for col in range(self.cols)] for row in range(self.rows)])
         elif type(other) is Matrix:
-            pass
+            assert self.rows == other.rows and self.cols == other.cols
+            return Matrix([[self[row][col] - other[row][col] for col in range(self.cols)] for row in range(self.rows)])
 
     def __mul__(self, other):
         if type(other) is int or type(other) is float:
@@ -62,3 +64,4 @@ if __name__ == '__main__':
     print(Matrix([[0, 1], [2, 3], [4, 5], [6, 7]]))
     print(Matrix(rows=2, cols=4))
     print(Matrix(rows=3, cols=5, val=1))
+    print(Matrix([[10, 9], [8, 7]]) - Matrix([[5, 6], [7, 8]]))
