@@ -1,3 +1,4 @@
+from functools import reduce
 
 
 class Matrix:
@@ -59,12 +60,8 @@ class Matrix:
             return Matrix([[self[row][col] * other for col in range(self.cols)] for row in range(self.rows)])
         elif type(other) is Matrix:
             assert self.cols == other.rows
-            result = Matrix(rows=self.rows, cols=other.cols, val=0)
-            for row in range(result.rows):
-                for col in range(result.cols):
-                    for i in range(self.cols): # or other.rows...
-                        result[row][col] += self[row][i] * other[i][col]
-            return result
+            return Matrix([[reduce(lambda a, b: a + b, [self[row][i] * other[i][col] for i in range(self.cols)]) for col in range(other.cols)] for row in range(self.rows)])
+        
 
 if __name__ == '__main__':
     print(Matrix([[0, 1], [2, 3], [4, 5], [6, 7]]))
