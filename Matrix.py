@@ -58,10 +58,17 @@ class Matrix:
         if type(other) is int or type(other) is float:
             return Matrix([[self[row][col] * other for col in range(self.cols)] for row in range(self.rows)])
         elif type(other) is Matrix:
-            pass
+            assert self.cols == other.rows
+            result = Matrix(rows=self.rows, cols=other.cols, val=0)
+            for row in range(result.rows):
+                for col in range(result.cols):
+                    for i in range(self.cols): # or other.rows...
+                        result[row][col] += self[row][i] * other[i][col]
+            return result
 
 if __name__ == '__main__':
     print(Matrix([[0, 1], [2, 3], [4, 5], [6, 7]]))
     print(Matrix(rows=2, cols=4))
     print(Matrix(rows=3, cols=5, val=1))
     print(Matrix([[10, 9], [8, 7]]) - Matrix([[5, 6], [7, 8]]))
+    print(Matrix([[1, 2, 3, 4], [4, 5, 6, 7], [7, 8, 9, 0]]) * Matrix([[1, 5], [2, 6], [3, 7], [4, 8]]))
