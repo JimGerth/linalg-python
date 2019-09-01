@@ -2,10 +2,22 @@
 
 class Matrix:
 
-    def __init__(self, rows, cols, val=0):
-        self.rows = rows
-        self.cols = cols
-        self.vals = [[val for _ in range(self.cols)] for _ in range(self.rows)]
+    def __init__(self, vals=None, rows=None, cols=None, val=0):
+        if not vals:
+            self.vals = [[val for col in range(cols)] for row in range(rows)]
+        else:
+            self.vals = vals
+
+    @property
+    def rows(self):
+        return len(self.vals)
+
+    @property
+    def cols(self):
+        if type(self.vals[0]) is list:
+            return len(self.vals[0])
+        else:
+            return 1
 
     @property
     def shape(self):
@@ -43,3 +55,8 @@ class Matrix:
             return [[self[row][col] * other for col in range(self.cols)] for row in range(self.rows)]
         elif type(other) is Matrix:
             pass
+
+if __name__ == '__main__':
+    print(Matrix([[0, 1], [2, 3], [4, 5], [6, 7]]))
+    print(Matrix(rows=2, cols=4))
+    print(Matrix(rows=3, cols=5, val=1))
