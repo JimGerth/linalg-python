@@ -7,9 +7,9 @@ class Matrix:
         if not vals:
             assert rows
             assert cols
-            self.vals = [[val for _ in range(cols)] for _ in range(rows)]
+            self._vals = [[val for _ in range(cols)] for _ in range(rows)]
         else:
-            self.vals = vals
+            self._vals = vals
 
     @property
     def rows(self):
@@ -28,13 +28,13 @@ class Matrix:
         return Matrix([[self[row][col] for row in range(self.rows)] for col in range(self.cols)])
 
     def __getitem__(self, idx):
-        return self.vals[idx] if type(self.vals[idx]) is list else [self.vals[idx]]
+        return self._vals[idx] if type(self._vals[idx]) is list else [self._vals[idx]]
 
     def __setitem__(self, idx, val):
-        self.vals[idx] = val
+        self._vals[idx] = val
 
     def __len__(self):
-        return len(self.vals)
+        return len(self._vals)
 
     def __str__(self):
         out = '\n'
