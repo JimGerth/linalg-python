@@ -42,19 +42,19 @@ class Matrix:
 
     def __add__(self, other):
         if type(other) is int or type(other) is float:
-            return [[self[row][col] + other for col in range(self.cols)] for row in range(self.rows)]
+            return Matrix([[self[row][col] + other for col in range(self.cols)] for row in range(self.rows)])
         elif type(other) is Matrix:
             pass
 
     def __sub__(self, other):
         if type(other) is int or type(other) is float:
-            return [[self[row][col] - other for col in range(self.cols)] for row in range(self.rows)]
+            return Matrix([[self[row][col] - other for col in range(self.cols)] for row in range(self.rows)])
         elif type(other) is Matrix:
             pass
 
     def __mul__(self, other):
         if type(other) is int or type(other) is float:
-            return [[self[row][col] * other for col in range(self.cols)] for row in range(self.rows)]
+            return Matrix([[self[row][col] * other for col in range(self.cols)] for row in range(self.rows)])
         elif type(other) is Matrix:
             pass
 
