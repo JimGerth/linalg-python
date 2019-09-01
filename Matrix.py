@@ -76,3 +76,4 @@ if __name__ == '__main__':
     print(Matrix([[1, 5], [2, 6], [3, 7], [4, 8]]))
     print(Matrix([[1, 5], [2, 6], [3, 7], [4, 8]]).T)
     print(Matrix([[1, 2, 3], [4, 5, 6]]) * Matrix([[7], [8], [9]]))
+    print(Matrix([[1, 2, 3]]) * Matrix([[4], [5], [6]]))
