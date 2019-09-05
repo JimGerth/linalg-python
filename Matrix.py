@@ -63,5 +63,9 @@ class Matrix:
         if type(other) is int or type(other) is float:
             return Matrix([[self[row][col] * other for col in range(self.cols)] for row in range(self.rows)])
         elif type(other) is Matrix:
-            assert self.cols == other.rows
-            return Matrix([[reduce(lambda a, b: a + b, [self[row][i] * other[i][col] for i in range(self.cols)]) for col in range(other.cols)] for row in range(self.rows)])
+            return self @ other
+
+    def __matmul__(self, other):
+        assert type(other) is Matrix
+        assert self.cols == other.rows
+        return Matrix([[reduce(lambda a, b: a + b, [self[row][i] * other[i][col] for i in range(self.cols)]) for col in range(other.cols)] for row in range(self.rows)])
